@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const useLocalStorage = (key, initialValue) => {
+const useLocalStorage = <T,>(key: string, initialValue: T): [T, React.Dispatch<React.SetStateAction<T>>] => {
   const [storedItems, setStoredItems] = useState(() => {
     try {
       const items = window.localStorage.getItem(key);
