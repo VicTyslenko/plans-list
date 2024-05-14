@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import TodoForm from "../TodoForm/TodoForm";
 import Todo from "../Todo/Todo";
 import useLocalStorage from "../hooks/useLocalStorage";
@@ -6,9 +6,9 @@ import { Task } from "../types/TaskType";
 
 interface TodoListActions {
   addTodo: (task: Task) => void;
-  updateTodo: (id: number, task: Task) => void;
-  removeTodo: (id: number) => void;
-  completeTodo: (id: number) => void;
+  updateTodo: (id: string, task: Task) => void;
+  removeTodo: (id: string) => void;
+  completeTodo: (id: string) => void;
 }
 
 const TodoList = () => {
@@ -41,9 +41,7 @@ const TodoList = () => {
     });
     setStoredTodos(upDatedTodos);
   };
-  useEffect(() => {
-    console.log(storedTodos);
-  }, [storedTodos]);
+
   return (
     <div>
       <h1>What's the plan for today?</h1>

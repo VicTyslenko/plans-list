@@ -6,13 +6,13 @@ import { Task } from "../types/TaskType";
 
 type Todos = {
   todos: Task[];
-  completeTodo: (id: number) => void;
-  removeTodo: (id: number) => void;
-  updateTodo: (id: number, task: Task) => void;
+  completeTodo: (id: string) => void;
+  removeTodo: (id: string) => void;
+  updateTodo: (id: string, task: Task) => void;
 };
 
 const Todo = ({ todos, completeTodo, removeTodo, updateTodo }: Todos) => {
-  const [edit, setEdit] = useState<{ id: number | null; text: string }>({ id: null, text: "" });
+  const [edit, setEdit] = useState<{ id: string | null; text: string }>({ id: null, text: "" });
 
   const submitUpdate = (task: Task, newText: string) => {
     if (task && task.id !== null) {

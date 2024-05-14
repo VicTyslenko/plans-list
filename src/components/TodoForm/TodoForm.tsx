@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Task } from "../types/TaskType";
+import { v4 as uuidv4 } from "uuid";
 
 interface TodoFormProps {
   edit?: Task;
@@ -14,10 +15,12 @@ const TodoForm = (props: TodoFormProps) => {
     setInput(event.target.value);
   };
 
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   useEffect(() => {
-    // inputRef.current.focus();
-  });
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
 
   const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
@@ -26,7 +29,7 @@ const TodoForm = (props: TodoFormProps) => {
     } else {
       onSubmitForm(
         {
-          id: Math.floor(Math.random() * 10000),
+          id: uuidv4(),
           text: input,
         },
         input
