@@ -1,4 +1,3 @@
-import React from "react";
 import TodoForm from "../TodoForm/TodoForm";
 import Todo from "../Todo/Todo";
 import useLocalStorage from "../hooks/useLocalStorage";
